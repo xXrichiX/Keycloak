@@ -1,0 +1,10 @@
+{
+  "name": "backend-keycloak-practica",
+  "version": "1.0.0",
+  "description": "Backend con autenticación Keycloak - Práctica Seguridad Informática",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-oauth2-jwt-bearer": "^1.4.0"
+  }
+}
