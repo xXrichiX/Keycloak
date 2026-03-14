@@ -14,9 +14,9 @@ Instrucciones para ejecutar el proyecto.
 ## 1. Levantar Keycloak
 
 ```bash
-cd practica-auth
 docker compose up -d
 ```
+(Ejecutar desde la raíz del proyecto.)
 
 Esperar 20-30 segundos. Luego abrir: **http://localhost:8080**
 
@@ -52,9 +52,19 @@ En la consola de Keycloak (http://localhost:8080):
 
 ---
 
-## Resumen de comandos
+## 4. Landing con registro y seguridad
 
-| Qué              | Dónde      | Comando              |
-|------------------|------------|----------------------|
-| Keycloak         | `practica-auth/` | `docker compose up -d` |
-| Backend          | `practica-auth/backend/` | `npm install` y `node server.js` |
+1. **En Keycloak** (realm LaboratorioDev):
+   - **Realm settings** → pestaña **Login** → activar **User registration**.
+   - **Clients** → **Create client** → Client ID: `landing-app` (cliente público, Standard flow ON).
+   - En el cliente `landing-app`: Root URL `http://localhost:3001`, Valid redirect URIs `http://localhost:3001/*`, Web origins `http://localhost:3001`.
+
+2. **Ejecutar la landing**:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+   Abrir **http://localhost:3001**. Desde ahí puedes **Registrarte** o **Iniciar sesión**; solo los usuarios autenticados ven la landing segura.
+
+---

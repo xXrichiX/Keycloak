@@ -1,0 +1,29 @@
+Dentro de **Keycloak** hicimos solo **2 cosas** para que la landing funcionara:
+
+---
+
+## 1. Activar registro de usuarios
+
+- **Dónde:** Realm **LaboratorioDev** → **Realm settings** → pestaña **Login**
+- **Qué:** Poner **User registration** en **ON** y guardar
+- **Para qué:** Que en la pantalla de login aparezca "Register" y que la landing pueda abrir el formulario de registro
+
+---
+
+## 2. Crear el cliente de la landing
+
+- **Dónde:** **Clients** → **Create client**
+- **Qué configuramos:**
+  - **Client ID:** `landing-app`
+  - **Client authentication:** OFF (cliente público)
+  - **Standard flow:** ON
+  - **Root URL:** `http://localhost:3001`
+  - **Valid redirect URIs:** `http://localhost:3001/*`
+  - **Web origins:** `http://localhost:3001`
+  - Guardar
+
+- **Para qué:** Que Keycloak reconozca a la app que corre en el puerto 3001 y pueda mandar ahí al usuario después del login/registro (redirect URI y CORS).
+
+---
+
+**Resumen:** Solo eso en Keycloak: **User registration ON** y **un cliente `landing-app`** con esas URLs. El resto (realm LaboratorioDev, backend-api, estudiante1) ya lo tenías de la práctica anterior.
